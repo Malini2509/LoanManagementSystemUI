@@ -1,0 +1,22 @@
+.table-container {
+    width: 500px; /* Set the desired width of the container */
+    height: 300px; /* Set the desired height of the container */
+    overflow: auto; /* Add scrollbars if the table exceeds the container's dimensions */
+    border: 1px solid black; /* Add a border for visibility */
+  }
+
+  table {
+    width: 95%; /* Use the full width of the container */
+    border-collapse: collapse;
+    margin-left: 10px;
+  }
+
+  th, td {
+    padding: 8px; /* Add padding to the cells for readability */
+    border: 1px solid black; /* Add a border to the cells for visibility */
+  }
+
+    th {
+        background-color: gray; /* Add a background color to the header cells */
+        color: white; /* Set the text color of the header cells */
+      }

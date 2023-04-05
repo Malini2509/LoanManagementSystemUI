@@ -1,0 +1,174 @@
+<body>
+    <div class="container">
+        <div class="card">
+            <form (ngSubmit)="onSubmit()" [formGroup]="loanDetails">
+                <h4>LOAN DETAILS:</h4>
+                <div class="form-group"><label for="loanAmount">Loan Amount:</label><input type="number"
+                        class="form-control" formControlName="loanAmount" id="loanAmount" name="loanAmount"  maxlength="11"  min="0" >
+                    <div
+                        *ngIf="loanDetails.controls.loanAmount?.invalid && (loanDetails.controls.loanAmount?.dirty || loanDetails.controls.loanAmount?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.loanAmount.errors?.['required']">
+                           This field is required.
+                        </small>
+                        <small class="text-danger" *ngIf="loanDetails.controls.loanAmount.errors?.['max']">
+                            The maximum loan amount is 50,00,000.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"><label for="monthlyIncome">Monthy income:</label><input type="number"
+                        class="form-control" formControlName="monthlyIncome" formControlName="monthlyIncome" min="25000" max="10000000" maxlength="6">
+                    <div
+                        *ngIf="loanDetails.controls.monthlyIncome?.invalid && (loanDetails.controls.monthlyIncome?.dirty || loanDetails.controls.monthlyIncome?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.monthlyIncome.errors?.['required']">
+                            This field is required.
+                        </small>
+                    </div>
+                    <div class="text-danger" *ngIf="loanDetails.controls.monthlyIncome.errors?.['min']">
+                        Monthly income must be at least 25000.
+                    </div>
+                    <div class="text-danger" *ngIf="loanDetails.controls.monthlyIncome.errors?.['max']">
+                        Monthly income cannot be greater than 10L.
+                    </div>
+                </div>
+                <div class="form-group"><label for="purposeOfLoan">Please select the loan purpose:</label>
+                    <select formControlName="purposeOfLoan" class="form-control" id="purposeOfLoan"
+                        name="purposeOfLoan">
+                        <option>Personal</option>
+                        <option>Education</option>
+                        <option>Business</option>
+                        <option>Vehicle</option>
+                    </select>
+                    <div
+                        *ngIf="loanDetails.controls.purposeOfLoan?.invalid && (loanDetails.controls.purposeOfLoan?.dirty || loanDetails.controls.purposeOfLoan?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.purposeOfLoan.errors?.['required']">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+
+                <h4>PERSONAL DETAILS:</h4>
+                <div class="form-group"><label for="fullName">Full name:</label><input type="text"
+                        formControlName="fullName" class="form-control" id="fullName" name="fullName" pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" >
+                    <div
+                        *ngIf="loanDetails.controls.fullName?.invalid && (loanDetails.controls.fullName?.dirty || loanDetails.controls.fullName?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.fullName.errors?.['required']">
+                            This Field is required.
+                        </small>
+                    </div>
+                    <div>
+                    <small class="text-danger" *ngIf="loanDetails.controls.fullName.errors?.['pattern']">
+                        Only letters and space only allowded and the name doesn't have space at the front and the end.
+                    </small>
+                </div>
+                </div>
+                <div class="form-group"><label for="email">Email:</label><input type="text" formControlName="email"
+                        class="form-control" id="email" name="email">
+                    <div
+                        *ngIf="loanDetails.controls.email?.invalid && (loanDetails.controls.email?.dirty || loanDetails.controls.email?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.email.errors?.['required']">
+                            This Field is required.
+                        </small>
+                    </div>
+                    <div>
+                        <small class="text-danger" *ngIf="loanDetails.controls.email.errors?.['email']">
+                            Please enter a valid email address. 
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"><label for="mobileNumber">Mobile number:</label><input type="text"
+                        formControlName="mobileNumber" class="form-control" id="mobileNumber" name="mobileNumber" pattern="^[6-9]\d{9}$" maxlength="10">
+                    <div
+                        *ngIf="loanDetails.controls.mobileNumber?.invalid && (loanDetails.controls.mobileNumber?.dirty || loanDetails.controls.mobileNumber?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.mobileNumber.errors?.['required']">
+                            This Field is required.
+                        </small>
+                    </div>
+                    <div
+                *ngIf="loanDetails.controls.mobileNumber.errors?.['pattern']">
+                    <small class="text-danger" >
+                        Invalid Mobile number , please enter the correct mobile number 
+                    </small>
+                </div>
+                </div>
+                <div class="form-group"><label for="dateOfBirth">Date of Birth:</label><input type="date"
+                        class="form-control" formControlName="dateOfBirth" id="dateOfBirth" name="dateOfBirth" [max]="getMaxDate()"
+                        [disabled]="isDateAfterToday()">
+                    <div
+                        *ngIf="loanDetails.controls.dateOfBirth?.invalid && (loanDetails.controls.dateOfBirth?.dirty || loanDetails.controls.dateOfBirth?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.dateOfBirth.errors?.['required']">
+                            Date Of Birth is requried.
+                        </small>
+                    </div>
+                    <div>
+                        <small class="text-danger"
+                                *ngIf="loanDetails.controls.dateOfBirth.errors?.['ageRange']">
+                          You should be between 21 to 67* years of age to apply for a personal loan   
+                        </small>
+                </div>
+                </div>
+                <div class="form-group"><label for="panCardNumber">Pancard number:</label><input type="text"
+                        formControlName="panCardNumber" class="form-control" id="panCardNumber" name="panCardNumber" pattern="^[A-Z]{5}[0-9]{4}[A-Z]{1}$">
+                    <div
+                        *ngIf="loanDetails.controls.panCardNumber?.invalid && (loanDetails.controls.panCardNumber?.dirty || loanDetails.controls.panCardNumber?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.panCardNumber.errors?.['required']">
+                            This Field is required.
+                        </small>
+                    </div>
+                    <div>
+                        <small class="text-danger" *ngIf="loanDetails.controls.panCardNumber.errors?.['pattern']">
+                           Invalid pan number, please enter the correct pancard number
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"><label for="city">Please select a city:</label>
+                    <select formControlName="city" id="city" name="city" class="form-control"
+                        *ngIf="cities && cities.length > 0">
+                        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                    </select>
+                    <div
+                        *ngIf="loanDetails.controls.city?.invalid && (loanDetails.controls.city?.dirty || loanDetails.controls.city?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.city.errors?.['required']">
+                            This Field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"><label for="sector">please select a sector:</label>
+                    <select formControlName="sector" class="form-control" id="sector" name="sector">
+                        <option>Government</option>
+                        <option>Central Government</option>
+                        <option>MNC</option>
+                        <option>Private</option>
+                        <option>Freelancer/self-employed</option>
+                    </select>
+                    <div
+                        *ngIf="loanDetails.controls.sector?.invalid && (loanDetails.controls.sector?.dirty || loanDetails.controls.sector?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.sector.errors?.['required']">
+                            sector is requried.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group"><label for="monthlyExpenses">Enter your monthly
+                        expenses:</label><input type="number" class="form-control" formControlName="monthlyExpenses"
+                        id="monthlyExpenses" name="monthlyExpenses">
+                    <div
+                        *ngIf="loanDetails.controls.monthlyExpenses?.invalid && (loanDetails.controls.monthlyExpenses?.dirty || loanDetails.controls.monthlyExpenses?.touched)">
+                        <small class="text-danger" *ngIf="loanDetails.controls.monthlyExpenses.errors?.['required']">
+                            Monthly expenses is requried.
+                        </small>
+                        <small class="text-danger" *ngIf="loanDetails.controls.monthlyExpenses.errors?.['invalidAmount']">
+                            Monthly expenses cannot be greater than 70% of monthly income.
+                          </small>
+                    </div>
+
+                </div>
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <button type="submit" class="btn btn-primary">
+                    <span *ngIf="!submitted">Submit</span>
+                    <span *ngIf="submitted"><i class="fa fa-spinner fa-spin"></i> Submitting...</span>
+                </button>
+                <h3>{{isloanEligible}}</h3>
+            </form>
+        </div>
+    </div>
+</body>

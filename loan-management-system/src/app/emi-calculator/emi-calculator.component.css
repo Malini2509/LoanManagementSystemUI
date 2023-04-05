@@ -1,0 +1,56 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+  margin: -15px auto 0;
+
+}
+
+.card {
+  box-shadow: 2px 2px 5px gray;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.card form {
+  width: 80%;
+}
+
+.response-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 10px;
+ 
+}
+
+.response-value {
+  width: 50%;
+}
+
+.chart-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  float: right;
+
+}
+
+.chart {
+  height: 270px !important;
+  width: 270px !important;
+  margin-left: 140px !important;
+}
+
+body {
+  background-image: url('https://www.kotak.com/content/dam/Kotak/herosliderbanner/credit-card-emi-calculator-d.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:128vh;
+}

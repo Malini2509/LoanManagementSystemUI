@@ -1,0 +1,54 @@
+<body>
+    <div class="container">
+        <div class="card">
+            <form (ngSubmit)="onSubmit()" [formGroup]="calculator">
+                <div class="form-group">
+                    <label for="timePeriod">Tenure(in years):</label>
+                    <input type="number" min="1" class="form-control" formControlName="timePeriod" id="timePeriod"
+                        name="timePeriod">
+                </div>
+                <div
+                    *ngIf="calculator.controls.timePeriod?.invalid && (calculator.controls.timePeriod?.dirty || calculator.controls.timePeriod?.touched)">
+                    <small class="text-danger" *ngIf="calculator.controls.timePeriod.errors?.['required']">
+                        This field is requried
+                    </small>
+                    <small class="text-danger" *ngIf="calculator.controls.timePeriod.errors?.['max']">
+                        The maximum year should be 5
+                    </small>
+                </div>
+                <div class="form-group"><label for="principleAmount">Loan Amount:</label><input type="number" min="0"
+                        formControlName="principleAmount" class="form-control" id="principleAmount"
+                        name="principleAmount">
+                </div>
+                <div
+                    *ngIf="calculator.controls.principleAmount?.invalid && (calculator.controls.principleAmount?.dirty || calculator.controls.principleAmount?.touched)">
+                    <small class="text-danger" *ngIf="calculator.controls.principleAmount.errors?.['required']">
+                        This field is requried.
+                    </small>
+                    <small class="text-danger" *ngIf="calculator.controls.principleAmount.errors?.['max']">
+                        The maximum principle amount is 30,00,000.
+                    </small>
+                </div>
+                <div class="form-group"><label for="intrestRate">Intrest Rate(%):</label><input type="number" min="0"
+                        class="form-control" formControlName="intrestRate" id="intrestRate" name="intrestRate"></div>
+                <div
+                    *ngIf="calculator.controls.intrestRate?.invalid && (calculator.controls.intrestRate?.dirty || calculator.controls.intrestRate?.touched)">
+                    <small class="text-danger" *ngIf="calculator.controls.intrestRate.errors?.['required']">
+                        This field is requried.
+                    </small>
+                    <small class="text-danger" *ngIf="calculator.controls.intrestRate.errors?.['max']">
+                        The maximum intrest rate should be 25%
+                    </small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div *ngIf="showEmiDetails">
+                <h4>Your Monthly EMI is Rs.{{emi?.loanEmi}}</h4>
+                <h4>Total intrest payable is Rs.{{emi?.totalIntrestPayable}}</h4>
+                <h4>Your total payment(principleAmount + Total emi) is Rs.{{emi?.totalPayment}}</h4>
+                <div class="chart-container"></div>
+                <canvas #chart class="chart"></canvas>
+            </div>
+        </div>
+    </div>
+</body>

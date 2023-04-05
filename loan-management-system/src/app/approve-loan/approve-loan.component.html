@@ -1,0 +1,38 @@
+<div class="mt-3">
+    <table class="table table-bordered">
+        <thead class="thead">
+            <tr>
+                <th>Full Name</th>
+                <th>City</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Pancard Number</th>
+                <th>Monthly Income</th>
+                <th>Monthly Expenses</th>
+                <th>Sector</th>
+                <th>Purpose Of Loan</th>
+                <th>loan Amount</th>
+                <th>loanId</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="tbody" >
+            <tr *ngFor="let loan of loanApplication;">
+                <td> {{loan.fullName}}</td>
+                <td> {{loan.city}}</td>
+                <td> {{loan.dateOfBirth}}</td>
+                <td> {{loan.email}}</td>
+                <td> {{loan.mobileNumber}}</td>
+                <td> {{loan.panCardNumber}}</td>
+                <td> {{loan.monthlyIncome}}</td>
+                <td> {{loan.monthlyExpenses}}</td>
+                <td> {{loan.sector}}</td>
+                <td> {{loan.purposeOfLoan}}</td>
+                <td> {{loan.loanAmount}}</td>
+                <td>{{loan.loanId}}</td>
+                <td> <button type="button" class="btn btn-success" (click)="approveLoan(loan.loanId)">Approve</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

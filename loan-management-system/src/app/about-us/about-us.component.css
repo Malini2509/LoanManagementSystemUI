@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin-left: 18px;
+  }
+  
+  .about-us-content {
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    /* text-align: center; */
+    text-align:justify;
+    border: 2px solid gray;
+    padding: 40px;
+    margin-left: 10%;
+    margin-top: 50px;
+  }
+  .col-md-4 {
+    margin-top: 30px;
+  }

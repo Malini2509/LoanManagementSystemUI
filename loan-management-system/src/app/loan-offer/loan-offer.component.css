@@ -1,0 +1,115 @@
+.table-container {
+    width: 400px; /* Set the desired width of the container */
+    height: 300px; /* Set the desired height of the container */
+    overflow: auto; /* Add scrollbars if the table exceeds the container's dimensions */
+    border: 1px solid black; /* Add a border for visibility */
+  }
+
+  table {
+    width: 80%; /* Use the full width of the container */
+    border-collapse: collapse;
+    margin-left: 90px;
+  }
+
+  th, td {
+    padding: 8px; /* Add padding to the cells for readability */
+    border: 1px solid black; /* Add a border to the cells for visibility */
+  }
+
+    th {
+        background-color: gray; /* Add a background color to the header cells */
+        color: white; /* Set the text color of the header cells */
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .input-group input {
+        margin-left: 10px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        text-align: center;
+        margin: -5px auto 0;
+        border: black;
+        background-color: grey;
+      }
+      
+      .card {
+        box-shadow: 2px 2px 5px gray;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 25px;
+      }
+      
+      
+      .card form {
+        width: 60%;
+      }
+      
+      .response-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      
+      .response-value {
+        width: 50%;
+      }
+      
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 100vh; */
+        text-align: center;
+    }
+
+    .alert {
+      margin-top: 10px;
+    }
+
+    .loan-application-form {
+      display: fcex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      margin-top: 20px;
+      width: 400px;
+      margin-left: 420px;
+      margin-bottom: 40px;
+    }
+    
+    .loan-application-form label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .loan-application-form input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    
+    .loan-application-form button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    

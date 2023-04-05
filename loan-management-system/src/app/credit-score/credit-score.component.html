@@ -1,0 +1,104 @@
+<body>
+    <div class="card">
+        <div class="container">
+            <form (ngSubmit)="onSubmit()" [formGroup]="userDetails">
+                <div class="form-group"><label for="fullName">Fullname:</label><input type="text" class="form-control"
+                        formControlName="fullName" id="fullName" name="fullName"  pattern="[a-zA-Z][a-zA-Z ]+[a-zA-Z]$" ></div>
+                <div
+                    *ngIf="userDetails.controls.fullName?.invalid && (userDetails.controls.fullName?.dirty || userDetails.controls.fullName?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.fullName.errors?.['required']">
+                        FullName is requried.
+                    </small>
+                    <div *ngIf="userDetails.controls.fullName.errors?.['pattern']">
+                        <small class="text-danger">Only letters and space only allowded and the name doesn't have space at the front and the end.</small></div>
+                </div>
+                <div>
+                <small class="text-danger" *ngIf="userDetails.controls.fullName.errors?.['maxLength']">
+                    The maximum allawable letters in the name should be 50
+                </small>
+            </div>
+                <div class="form-group"><label for="email">Email:</label><input type="email" formControlName="email"
+                        class="form-control" id="email" name="email">
+                </div>
+                <div
+                    *ngIf="userDetails.controls.email?.invalid && (userDetails.controls.email?.dirty || userDetails.controls.email?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.email.errors?.['required']">
+                        Email is requried.
+                    </small>
+                </div>
+                <div *ngIf="userDetails.controls.email.errors?.['email']">
+                    <small class="text-danger">  Please enter a valid email address.</small> 
+                </div>
+                <div class="form-group"><label for="dateOfBirth">Date of Birth:</label><input type="date"
+                        class="form-control" formControlName="dateOfBirth" id="dateOfBirth" name="dateOfBirth"  [max]="getMaxDate()"
+                        [disabled]="isDateAfterToday()"></div>
+                <div
+                    *ngIf="userDetails.controls.dateOfBirth?.invalid && (userDetails.controls.dateOfBirth?.dirty || userDetails.controls.dateOfBirth?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.dateOfBirth.errors?.['required']">
+                        Date of Birth is requried.
+                    </small>
+                </div>
+                <div class="form-group"><label for="panCardNumber">Pancard Number:</label><input type="text"
+                        class="form-control" formControlName="panCardNumber" pattern="^[A-Z]{5}[0-9]{4}[A-Z]{1}$"></div>
+                <div
+                    *ngIf="userDetails.controls.panCardNumber?.invalid && (userDetails.controls.panCardNumber?.dirty || userDetails.controls.panCardNumber?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.panCardNumber.errors?.['required']">
+                        Pancard Number is requried.
+                    </small>
+                </div>
+                <div
+                    *ngIf="userDetails.controls.panCardNumber?.invalid && (userDetails.controls.panCardNumber?.dirty || userDetails.controls.panCardNumber?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.panCardNumber.errors?.['pattern']">
+                        Invalid format, please enter the correct format
+                    </small>
+                </div>
+                <div class="form-group"><label for="phoneNumber">Mobile Number:</label><input type="tel"
+                        class="form-control" formControlName="phoneNumber" pattern="^[6-9]\d{9}$" maxlength="10"></div>
+                <div
+                    *ngIf="userDetails.controls.phoneNumber?.invalid && (userDetails.controls.phoneNumber?.dirty || userDetails.controls.phoneNumber?.touched)">
+                    <small class="text-danger" *ngIf="userDetails.controls.phoneNumber.errors?.['required']">
+                        Phone Number is requried.
+                    </small>
+                </div>
+                <div
+                *ngIf="userDetails.controls.phoneNumber.errors?.['pattern']">
+                    <small class="text-danger" >
+                        Invalid Mobile number , please enter the correct mobile number 
+                    </small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <h3>Your credit score value is {{creditScore}}</h3>
+        </div>
+    </div>
+</body>
+<div>
+    <h3>LEARN MORE ABOUT CREDIT SCORE!</h3>
+
+    <ul style="font-size:16px;">
+        <li> Excellent: A score of 800 or above is generally considered excellent and indicates that the person is very
+            unlikely to have any issues with credit in the future.</li>
+
+        <li>Very Good: Scores between 740 and 799 are typically considered very good and suggest that the person is a
+            low credit risk.</li>
+
+        <li> Good: Scores between 670 and 739 are generally considered good and indicate that the person is a moderate
+            credit risk.</li>
+
+        <li> Fair: Scores between 580 and 669 are typically considered fair and suggest that the person may have some
+            credit issues that need to be addressed.</li>
+
+        <li> Poor: Scores between 300 and 579 are generally considered poor and suggest that the person has a high
+            credit risk and may have difficulty getting approved for credit.</li>
+    </ul>
+
+    <h4> Credit score is LOW!!! Don't worry here are the tips to improve your credit score</h4>
+    <ul style="font-size:16px;">
+        <li> 1. Check your credit report</li>
+        <li> 2. Pay your bills on time</li>
+        <li> 3. Reduce your credit utilization</li>
+        <li> 4. Apply for credit sparingly</li>
+        <li> 5. Open a secured credit card</li>
+        <li> 6. Be patient</li>
+    </ul>
+</div>

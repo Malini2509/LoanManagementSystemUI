@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Loan Management System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- <div class="navStyle" id="navbarSupportedContent"> -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <ul className="navStyleLink"> -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/home">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mr-2" aria-current="page" routerLink="/admin"
+                        *ngIf="userService.roleMatch(['Admin'])">ADMIN DASHBOARD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mr-2" aria-current="page" routerLink="/user"
+                        *ngIf="userService.roleMatch(['User'])">USER DASHBOARD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mr-2" aria-current="page" routerLink="/user"
+                        *ngIf="userService.roleMatch(['User'])" (click)="navigateToAboutUs()">ABOUT US</a>
+                </li>
+            </ul>
+            <form>
+                <div class='buttons'>
+                    <button *ngIf="!logedIn()" type="button" class="btn btn-success ma-3"
+                        routerLink="/login">Login</button>
+                    <button *ngIf="logedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

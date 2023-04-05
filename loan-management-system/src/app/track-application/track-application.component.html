@@ -1,0 +1,30 @@
+<body>
+<div class="container">
+    <div class="card">
+        <form (ngSubmit)="onSubmit()" [formGroup]="TrackMyApp">
+            <div class="form-group"><label for="loanId">Loan id :</label><input type="text" class="form-control"
+                    formControlName="loanId" id="loanId" name="loanId">
+                <div
+                    *ngIf="TrackMyApp.controls.loanId?.invalid && (TrackMyApp.controls.loanId?.dirty || TrackMyApp.controls.loanId?.touched)">
+                    <small class="text-danger" *ngIf="TrackMyApp.controls.loanId.errors?.['required']">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!TrackMyApp.valid">Track my application status</button>
+            <div *ngIf="errorMessage">
+                <p class="text-danger">{{errorMessage}}</p>
+            </div>
+            <div *ngIf="loanApplication">
+                <h3>Loan Details:</h3>
+                <p>Full Name: {{loanApplication!.fullName}}</p>
+                <p>Loan Amount: {{loanApplication!.loanAmount}}</p>
+                <p>Purpose of Loan: {{loanApplication!.purposeOfLoan}}</p> 
+                <p>Email: {{loanApplication!.email}}</p> 
+                <p>Mobile number: {{loanApplication!.mobileNumber}}</p>            
+                <p [style.color]="'green'">Loan Status: {{loanApplication!.loanStatus}}</p>
+              </div>
+        </form>
+    </div>
+</div>
+</body>

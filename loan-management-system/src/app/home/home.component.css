@@ -1,0 +1,8 @@
+.image-with-text {
+    display: flex; /* Display the image and text side by side */
+    align-items: center; /* Center the text vertically */
+  }
+  
+  #my-image {
+    margin-right: 20px; /* Add some space between the image and text */
+  }
