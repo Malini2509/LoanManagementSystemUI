@@ -1,27 +1,35 @@
-# LoanManagementSystem
+# LoanManagementSystemUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+This is a web-based loan management system implemented in Angular.
 
-## Development server
+It is a user friendly application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
+To run this application, you need to have the following software installed on your system:
 
-## Code scaffolding
+* Node.js (v12 or higher)
+* npm (v6 or higher)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+To get started with this project, follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone this repository to your local machine
+2. Install the dependencies
+3. Start the development server
+4. Open your browser and navigate to http://localhost:4200
 
-## Running unit tests
+## Features
+This loan management system has the following features:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* User authentication (using JWT token)
+* Register new user
+* View credit score
+* Calculate your monthly emi - Included the pie chart representation for this feature.
+* Apply for a loan
+* Track your loan status
+* Loan eligibility check
+* Check your loan offers
+* About-us page, just to display the application more like real
+  
+  For all the features validation is handled.
